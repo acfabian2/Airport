@@ -2,11 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package airport;
+package core.view;
 
 import airport.Flight;
+import airport.Flight;
+import airport.Location;
 import airport.Location;
 import airport.Passenger;
+import airport.Passenger;
+import airport.Plane;
 import airport.Plane;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
