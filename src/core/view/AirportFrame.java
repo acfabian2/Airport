@@ -23,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
  * @author edangulo
  */
 public class AirportFrame extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form AirportFrame
