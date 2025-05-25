@@ -34,7 +34,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="core.views.PanelRound" name="GlobalPanel">
+    <Container class="core.airport.views.PanelRound" name="GlobalPanel">
       <Properties>
         <Property name="radius" type="int" value="40"/>
       </Properties>
@@ -43,7 +43,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="core.views.PanelRound" name="ViewActionsRoundPanel">
+        <Container class="core.airport.views.PanelRound" name="ViewActionsRoundPanel">
           <Events>
             <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ViewActionsRoundPanelMouseDragged"/>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ViewActionsRoundPanelMousePressed"/>
@@ -2277,7 +2277,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="core.views.PanelRound" name="LowerPonel">
+        <Container class="core.airport.views.PanelRound" name="LowerPonel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="-2" y="660" width="1150" height="-1"/>
