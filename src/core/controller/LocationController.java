@@ -1,9 +1,9 @@
-package core.airport.controller;
+package core.controller;
 
-import core.airport.model.Location;
-import core.airport.model.storage.LocationStorage;
-import core.airport.response.Response;
-import core.airport.util.Validator;
+import core.model.Location;
+import core.model.storage.LocationStorage;
+import core.response.Response;
+import core.util.Validator;
 
 public class LocationController {
 

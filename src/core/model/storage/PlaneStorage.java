@@ -1,6 +1,6 @@
-package core.airport.model.storage;
+package core.model.storage;
 
-import core.airport.model.Plane;
+import core.model.Plane;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

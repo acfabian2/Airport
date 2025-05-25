@@ -1,4 +1,4 @@
-package core.airport.model;
+package core.model;
 
 /**
  *

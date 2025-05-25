@@ -1,6 +1,6 @@
-package core.airport.model;
+package core.model;
 
-import core.airport.model.Flight;
+import core.model.Flight;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;

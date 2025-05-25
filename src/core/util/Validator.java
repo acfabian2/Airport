@@ -1,9 +1,9 @@
-package core.airport.util;
+package core.util;
 
-import core.airport.model.Plane;
-import core.airport.model.Passenger;
-import core.airport.model.Location;
-import core.airport.model.Flight;
+import core.model.Plane;
+import core.model.Passenger;
+import core.model.Location;
+import core.model.Flight;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

@@ -1,12 +1,12 @@
-package core.airport.views;
+package core.view;
 
-import core.airport.controller.FlightController;
-import core.airport.controller.PassengerController;
-import core.airport.model.Flight;
-import core.airport.model.Location;
-import core.airport.model.Passenger;
-import core.airport.model.Plane;
-import core.airport.response.Response;
+import core.controller.FlightController;
+import core.controller.PassengerController;
+import core.model.Flight;
+import core.model.Location;
+import core.model.Passenger;
+import core.model.Plane;
+import core.response.Response;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.time.Duration;
@@ -105,8 +105,8 @@ public class AirportFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        GlobalPanel = new core.airport.views.PanelRound();
-        ViewActionsRoundPanel = new core.airport.views.PanelRound();
+        GlobalPanel = new core.view.PanelRound();
+        ViewActionsRoundPanel = new core.view.PanelRound();
         CloseButton = new javax.swing.JButton();
         UserInterfaceTabs = new javax.swing.JTabbedPane();
         AdministratorPanel = new javax.swing.JPanel();
@@ -243,7 +243,7 @@ public class AirportFrame extends javax.swing.JFrame {
         MinutesLabel = new javax.swing.JLabel();
         MinutesCombo = new javax.swing.JComboBox<>();
         DelayButton = new javax.swing.JButton();
-        LowerPonel = new core.airport.views.PanelRound();
+        LowerPonel = new core.view.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1863,7 +1863,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JLabel FlightLabel2;
     private javax.swing.JPanel FlightRegistrationPanel;
     private javax.swing.JScrollPane FlightScrollPane;
-    private core.airport.views.PanelRound GlobalPanel;
+    private core.view.PanelRound GlobalPanel;
     private javax.swing.JComboBox<String> HoursCombo;
     private javax.swing.JLabel HoursLabel;
     private javax.swing.JComboBox<String> IdCombo;
@@ -1884,7 +1884,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JLabel LastNameLabel2;
     private javax.swing.JComboBox<String> LocationCombo;
     private javax.swing.JPanel LocationRegistrationPanel;
-    private core.airport.views.PanelRound LowerPonel;
+    private core.view.PanelRound LowerPonel;
     private javax.swing.JComboBox<String> MONTH1;
     private javax.swing.JComboBox<String> MONTH2;
     private javax.swing.JTextField MaxCapacityField;
@@ -1931,6 +1931,6 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton UserButton;
     private javax.swing.JTabbedPane UserInterfaceTabs;
     private javax.swing.JComboBox<String> UserSelectCombo;
-    private core.airport.views.PanelRound ViewActionsRoundPanel;
+    private core.view.PanelRound ViewActionsRoundPanel;
     // End of variables declaration//GEN-END:variables
 }

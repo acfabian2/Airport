@@ -1,6 +1,6 @@
 package main;
 
-import core.airport.views.AirportFrame;
+import core.view.AirportFrame;
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;

@@ -1,4 +1,4 @@
-package core.airport.response;
+package core.response;
 
 public class Response {
 

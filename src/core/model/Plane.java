@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package core.airport.model;
+package core.model;
 
-import core.airport.model.Flight;
+import core.model.Flight;
 import java.util.ArrayList;
 
 /**
