@@ -1,18 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package airport;
 
+import airport.controller.FlightController;
 import airport.model.Flight;
 import airport.model.Location;
 import airport.model.Passenger;
 import airport.model.Plane;
+import airport.response.Response;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,6 +31,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private ArrayList<Plane> planes;
     private ArrayList<Location> locations;
     private ArrayList<Flight> flights;
+    private final FlightController flightController = new FlightController();
 
     public AirportFrame() {
         initComponents();
@@ -1528,10 +1530,23 @@ public class AirportFrame extends javax.swing.JFrame {
             }
         }
 
+        Duration duracionVuelo = Duration.ofHours(hoursDurationsArrival).plusMinutes(minutesDurationsArrival);
+        Duration duracionEscala = Duration.ofHours(hoursDurationsScale).plusMinutes(minutesDurationsScale);
+
+        Flight vuelo;
+
         if (scale == null) {
-            this.flights.add(new Flight(id, plane, departure, arrival, departureDate, hoursDurationsArrival, minutesDurationsArrival));
+            vuelo = new Flight(id, plane, departure, arrival, null, departureDate, Duration.ZERO, duracionVuelo);
         } else {
-            this.flights.add(new Flight(id, plane, departure, scale, arrival, departureDate, hoursDurationsArrival, minutesDurationsArrival, hoursDurationsScale, minutesDurationsScale));
+            vuelo = new Flight(id, plane, departure, arrival, scale, departureDate, duracionEscala, duracionVuelo);
+        }
+
+        Response response = flightController.registerFlight(vuelo);
+
+        if (response.isSuccess()) {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         this.FlightCombo.addItem(id);
@@ -1603,7 +1618,8 @@ public class AirportFrame extends javax.swing.JFrame {
             }
         }
 
-        flight.delay(hours, minutes);
+        Response response = flightController.delayFlight(flight.getId(), hours, minutes);
+
     }//GEN-LAST:event_DelayButtonActionPerformed
 
     private void RefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButtonActionPerformed
@@ -1620,9 +1636,23 @@ public class AirportFrame extends javax.swing.JFrame {
         ArrayList<Flight> flights = passenger.getFlights();
         DefaultTableModel model = (DefaultTableModel) FlightDataTable.getModel();
         model.setRowCount(0);
-        for (Flight flight : flights) {
-            model.addRow(new Object[]{flight.getId(), flight.getDepartureDate(), flight.calculateArrivalDate()});
+        Response response = flightController.getAllFlightsSorted();
+        if (response.isSuccess()) {
+            @SuppressWarnings("unchecked")
+            List<Flight> lista = (List<Flight>) response.getData();
+            for (Flight flight : lista) {
+                model.addRow(new Object[]{
+                    flight.getId(),
+                    flight.getDepartureTime(),
+                    flight.getDepartureTime()
+                    .plus(flight.getScaleTime())
+                    .plus(flight.getFlightTime())
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error al cargar los vuelos", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_RefreshButtonActionPerformed
 
     private void RefreshButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButton2ActionPerformed
@@ -1638,8 +1668,25 @@ public class AirportFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) AllFlightsTable.getModel();
         model.setRowCount(0);
-        for (Flight flight : this.flights) {
-            model.addRow(new Object[]{flight.getId(), flight.getDepartureLocation().getAirportId(), flight.getArrivalLocation().getAirportId(), (flight.getScaleLocation() == null ? "-" : flight.getScaleLocation().getAirportId()), flight.getDepartureDate(), flight.calculateArrivalDate(), flight.getPlane().getId(), flight.getNumPassengers()});
+        Response response = flightController.getAllFlightsSorted();
+
+        if (response.isSuccess()) {
+            @SuppressWarnings("unchecked")
+            List<Flight> lista = (List<Flight>) response.getData();
+            for (Flight flight : lista) {
+                model.addRow(new Object[]{
+                    flight.getId(),
+                    flight.getOrigin().getAirportId(),
+                    flight.getDestination().getAirportId(),
+                    (flight.getScale() == null ? "-" : flight.getScale().getAirportId()),
+                    flight.getDepartureTime(),
+                    flight.getDepartureTime().plus(flight.getScaleTime()).plus(flight.getFlightTime()),
+                    flight.getPlane().getId(),
+                    flight.getNumPassengers()
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, response.getMessage(), "Error al obtener vuelos", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_RefreshButton3ActionPerformed
 

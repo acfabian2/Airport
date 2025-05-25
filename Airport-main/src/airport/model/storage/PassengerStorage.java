@@ -1,4 +1,6 @@
-package airport.storage;
+package airport.model.storage;
+
+
 
 import airport.model.Passenger;
 import java.util.ArrayList;
