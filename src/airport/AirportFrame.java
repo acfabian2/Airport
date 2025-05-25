@@ -1,12 +1,12 @@
 package airport;
 
-import airport.controller.FlightController;
-import airport.controller.PassengerController;
-import airport.model.Flight;
-import airport.model.Location;
-import airport.model.Passenger;
-import airport.model.Plane;
-import airport.response.Response;
+import core.airport.controller.FlightController;
+import core.airport.controller.PassengerController;
+import core.airport.model.Flight;
+import core.airport.model.Location;
+import core.airport.model.Passenger;
+import core.airport.model.Plane;
+import core.airport.response.Response;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.time.Duration;
