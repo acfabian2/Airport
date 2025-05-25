@@ -1,6 +1,7 @@
 package airport;
 
 import airport.controller.FlightController;
+import airport.controller.PassengerController;
 import airport.model.Flight;
 import airport.model.Location;
 import airport.model.Passenger;
@@ -32,6 +33,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private ArrayList<Location> locations;
     private ArrayList<Flight> flights;
     private final FlightController flightController = new FlightController();
+    private final PassengerController passengerController = new PassengerController();
 
     public AirportFrame() {
         initComponents();
@@ -355,6 +357,11 @@ public class AirportFrame extends javax.swing.JFrame {
         PassengerRegistrationPanel.add(IdField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 130, -1));
 
         BirthDateYearField2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        BirthDateYearField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BirthDateYearField2ActionPerformed(evt);
+            }
+        });
         PassengerRegistrationPanel.add(BirthDateYearField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 90, -1));
 
         CountryField2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
@@ -1443,21 +1450,35 @@ public class AirportFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_UserButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        // TODO add your handling code here:
-        long id = Long.parseLong(IdField3.getText());
-        String firstname = FirstNameField2.getText();
-        String lastname = LastNameField2.getText();
-        int year = Integer.parseInt(BirthDateYearField2.getText());
-        int month = Integer.parseInt(MonthCombo2.getItemAt(MonthCombo2.getSelectedIndex()));
-        int day = Integer.parseInt(DayCombo2.getItemAt(DayCombo2.getSelectedIndex()));
-        int phoneCode = Integer.parseInt(PrefixField.getText());
-        long phone = Long.parseLong(NumberField2.getText());
-        String country = CountryField2.getText();
+        try {
+            long id = Long.parseLong(IdField3.getText().trim());
+            int phoneCode = Integer.parseInt(PrefixField.getText().trim());
+            long phone = Long.parseLong(NumberField2.getText().trim());
 
-        LocalDate birthDate = LocalDate.of(year, month, day);
+            String firstname = FirstNameField2.getText().trim();
+            String lastname = LastNameField2.getText().trim();
+            String country = CountryField2.getText().trim();
 
-        this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
-        this.UserSelectCombo.addItem("" + id);
+            int year = Integer.parseInt(BirthDateYearField2.getText().trim());
+            int month = Integer.parseInt(MonthCombo2.getItemAt(MonthCombo2.getSelectedIndex()));
+            int day = Integer.parseInt(DayCombo2.getItemAt(DayCombo2.getSelectedIndex()));
+
+            LocalDate birthDate = LocalDate.of(year, month, day);
+
+            Passenger p = new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country);
+            Response r = passengerController.registerPassenger(p);
+
+            if (r.isSuccess()) {
+                JOptionPane.showMessageDialog(this, r.getMessage(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                UserSelectCombo.addItem("" + id);
+            } else {
+                JOptionPane.showMessageDialog(this, r.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
@@ -1729,6 +1750,10 @@ public class AirportFrame extends javax.swing.JFrame {
     private void MonthComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MonthComboActionPerformed
+
+    private void BirthDateYearField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BirthDateYearField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BirthDateYearField2ActionPerformed
 
     /**
      * @param args the command line arguments

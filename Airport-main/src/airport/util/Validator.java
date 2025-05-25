@@ -7,12 +7,15 @@ import java.time.LocalDateTime;
 public class Validator {
 
     public static boolean isValidPassenger(Passenger p) {
-        return p.getId() >= 0 && String.valueOf(p.getId()).length() <= 15
+        return p.getId() >= 0
+                && String.valueOf(p.getId()).length() <= 15
+                && p.getCountryPhoneCode() >= 0
+                && String.valueOf(p.getCountryPhoneCode()).length() <= 3
+                && p.getPhone() >= 0
+                && String.valueOf(p.getPhone()).length() <= 11
                 && p.getFirstname() != null && !p.getFirstname().isBlank()
                 && p.getLastname() != null && !p.getLastname().isBlank()
                 && p.getCountry() != null && !p.getCountry().isBlank()
-                && p.getPhone() >= 0 && String.valueOf(p.getPhone()).length() <= 11
-                && p.getCountryPhoneCode() >= 0 && String.valueOf(p.getCountryPhoneCode()).length() <= 3
                 && p.getBirthDate() != null && !p.getBirthDate().isAfter(LocalDate.now());
     }
 
@@ -26,7 +29,7 @@ public class Validator {
 
     public static boolean isValidLocation(Location loc) {
         return loc.getAirportId().matches("^[A-Z]{3}$")
-                &&  loc.getAirportName() != null && !loc.getAirportName().isBlank()
+                && loc.getAirportName() != null && !loc.getAirportName().isBlank()
                 && loc.getAirportCity() != null && !loc.getAirportCity().isBlank()
                 && loc.getAirportCountry() != null && !loc.getAirportCountry().isBlank()
                 && loc.getAirportLatitude() >= -90 && loc.getAirportLatitude() <= 90
