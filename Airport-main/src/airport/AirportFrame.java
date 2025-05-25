@@ -131,7 +131,7 @@ public class AirportFrame extends javax.swing.JFrame {
         FirstNameField2 = new javax.swing.JTextField();
         PlaceHolder3 = new javax.swing.JLabel();
         DayCombo2 = new javax.swing.JComboBox<>();
-        jButton8 = new javax.swing.JButton();
+        RegisterButton = new javax.swing.JButton();
         AirPlaneRegistrationPanel = new javax.swing.JPanel();
         IdLabel5 = new javax.swing.JLabel();
         IdField4 = new javax.swing.JTextField();
@@ -393,14 +393,14 @@ public class AirportFrame extends javax.swing.JFrame {
         DayCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day" }));
         PassengerRegistrationPanel.add(DayCombo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
-        jButton8.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jButton8.setText("Register");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        RegisterButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        RegisterButton.setText("Register");
+        RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                RegisterButtonActionPerformed(evt);
             }
         });
-        PassengerRegistrationPanel.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, -1, -1));
+        PassengerRegistrationPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, -1, -1));
 
         UserInterfaceTabs.addTab("Passenger registration", PassengerRegistrationPanel);
 
@@ -418,7 +418,7 @@ public class AirportFrame extends javax.swing.JFrame {
         BrandLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         BrandLabel.setText("Brand:");
         AirPlaneRegistrationPanel.add(BrandLabel);
-        BrandLabel.setBounds(53, 157, 50, 25);
+        BrandLabel.setBounds(53, 157, 52, 25);
 
         BrandField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AirPlaneRegistrationPanel.add(BrandField);
@@ -431,7 +431,7 @@ public class AirportFrame extends javax.swing.JFrame {
         ModelLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         ModelLabel.setText("Model:");
         AirPlaneRegistrationPanel.add(ModelLabel);
-        ModelLabel.setBounds(53, 216, 55, 25);
+        ModelLabel.setBounds(53, 216, 57, 25);
 
         MaxCapacityField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AirPlaneRegistrationPanel.add(MaxCapacityField);
@@ -440,7 +440,7 @@ public class AirportFrame extends javax.swing.JFrame {
         MaxCapacityLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         MaxCapacityLabel.setText("Max Capacity:");
         AirPlaneRegistrationPanel.add(MaxCapacityLabel);
-        MaxCapacityLabel.setBounds(53, 276, 109, 25);
+        MaxCapacityLabel.setBounds(53, 276, 114, 25);
 
         AirlineField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AirPlaneRegistrationPanel.add(AirlineField);
@@ -1442,7 +1442,7 @@ public class AirportFrame extends javax.swing.JFrame {
         UserInterfaceTabs.setEnabledAt(11, true);
     }//GEN-LAST:event_UserButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
         // TODO add your handling code here:
         long id = Long.parseLong(IdField3.getText());
         String firstname = FirstNameField2.getText();
@@ -1458,7 +1458,7 @@ public class AirportFrame extends javax.swing.JFrame {
 
         this.passengers.add(new Passenger(id, firstname, lastname, birthDate, phoneCode, phone, country));
         this.UserSelectCombo.addItem("" + id);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
         // TODO add your handling code here:
@@ -1879,6 +1879,7 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JButton RefreshButton3;
     private javax.swing.JButton RefreshButton4;
     private javax.swing.JButton RefreshButton5;
+    private javax.swing.JButton RegisterButton;
     private javax.swing.JComboBox<String> ScaleLocationCombo;
     private javax.swing.JLabel ScaleLocationLabel;
     private javax.swing.JPanel ShowMyFlightsPanel;
@@ -1888,6 +1889,5 @@ public class AirportFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane UserInterfaceTabs;
     private javax.swing.JComboBox<String> UserSelectCombo;
     private airport.PanelRound ViewActionsRoundPanel;
-    private javax.swing.JButton jButton8;
     // End of variables declaration//GEN-END:variables
 }
