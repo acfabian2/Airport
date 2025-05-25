@@ -402,6 +402,11 @@ public class AirportFrame extends javax.swing.JFrame {
 
         RegisterButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         RegisterButton.setText("Register");
+        RegisterButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegisterButtonMouseClicked(evt);
+            }
+        });
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterButtonActionPerformed(evt);
@@ -425,7 +430,7 @@ public class AirportFrame extends javax.swing.JFrame {
         BrandLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         BrandLabel.setText("Brand:");
         AirPlaneRegistrationPanel.add(BrandLabel);
-        BrandLabel.setBounds(53, 157, 52, 25);
+        BrandLabel.setBounds(53, 157, 50, 25);
 
         BrandField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AirPlaneRegistrationPanel.add(BrandField);
@@ -438,7 +443,7 @@ public class AirportFrame extends javax.swing.JFrame {
         ModelLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         ModelLabel.setText("Model:");
         AirPlaneRegistrationPanel.add(ModelLabel);
-        ModelLabel.setBounds(53, 216, 57, 25);
+        ModelLabel.setBounds(53, 216, 55, 25);
 
         MaxCapacityField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AirPlaneRegistrationPanel.add(MaxCapacityField);
@@ -447,7 +452,7 @@ public class AirportFrame extends javax.swing.JFrame {
         MaxCapacityLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         MaxCapacityLabel.setText("Max Capacity:");
         AirPlaneRegistrationPanel.add(MaxCapacityLabel);
-        MaxCapacityLabel.setBounds(53, 276, 114, 25);
+        MaxCapacityLabel.setBounds(53, 276, 109, 25);
 
         AirlineField.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         AirPlaneRegistrationPanel.add(AirlineField);
@@ -460,6 +465,11 @@ public class AirportFrame extends javax.swing.JFrame {
 
         CreateButton.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         CreateButton.setText("Create");
+        CreateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CreateButtonMouseClicked(evt);
+            }
+        });
         CreateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateButtonActionPerformed(evt);
@@ -1754,6 +1764,14 @@ public class AirportFrame extends javax.swing.JFrame {
     private void BirthDateYearField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BirthDateYearField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BirthDateYearField2ActionPerformed
+
+    private void CreateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CreateButtonMouseClicked
+
+    private void RegisterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterButtonMouseClicked
 
     /**
      * @param args the command line arguments

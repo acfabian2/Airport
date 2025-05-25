@@ -454,6 +454,7 @@
                     <Property name="text" type="java.lang.String" value="Register"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RegisterButtonMouseClicked"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterButtonActionPerformed"/>
                   </Events>
                   <Constraints>
@@ -610,6 +611,7 @@
                     <Property name="text" type="java.lang.String" value="Create"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CreateButtonMouseClicked"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateButtonActionPerformed"/>
                   </Events>
                   <Constraints>
