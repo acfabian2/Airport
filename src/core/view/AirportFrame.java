@@ -6,7 +6,7 @@ import core.models.Flight;
 import core.models.Location;
 import core.models.Passenger;
 import core.models.Plane;
-import core.response.Response;
+import core.controllers.utils.Response;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.time.Duration;

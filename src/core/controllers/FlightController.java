@@ -8,7 +8,7 @@ import core.models.storage.FlightStorage;
 import core.models.storage.PlaneStorage;
 import core.models.storage.LocationStorage;
 import core.models.storage.PassengerStorage;
-import core.response.Response;
+import core.controllers.utils.Response;
 import core.controllers.utils.Validator;
 
 import java.time.Duration;

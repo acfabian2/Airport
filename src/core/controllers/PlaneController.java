@@ -2,7 +2,7 @@ package core.controllers;
 
 import core.models.Plane;
 import core.models.storage.PlaneStorage;
-import core.response.Response;
+import core.controllers.utils.Response;
 import core.controllers.utils.Validator;
 
 public class PlaneController {

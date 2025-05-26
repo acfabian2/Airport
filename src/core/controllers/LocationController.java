@@ -2,7 +2,7 @@ package core.controllers;
 
 import core.models.Location;
 import core.models.storage.LocationStorage;
-import core.response.Response;
+import core.controllers.utils.Response;
 import core.controllers.utils.Validator;
 
 public class LocationController {
