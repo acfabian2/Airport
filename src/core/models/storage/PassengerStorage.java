@@ -1,8 +1,8 @@
-package core.model.storage;
+package core.models.storage;
 
 
 
-import core.model.Passenger;
+import core.models.Passenger;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

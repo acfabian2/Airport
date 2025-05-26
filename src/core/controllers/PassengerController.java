@@ -1,9 +1,9 @@
-package core.controller;
+package core.controllers;
 
-import core.model.Passenger;
-import core.model.storage.PassengerStorage;
+import core.models.Passenger;
+import core.models.storage.PassengerStorage;
 import core.response.Response;
-import core.util.Validator;
+import core.controllers.utils.Validator;
 
 public class PassengerController {
 

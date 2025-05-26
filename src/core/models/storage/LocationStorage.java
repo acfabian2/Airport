@@ -1,6 +1,6 @@
-package core.model.storage;
+package core.models.storage;
 
-import core.model.Location;
+import core.models.Location;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

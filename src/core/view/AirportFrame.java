@@ -1,11 +1,11 @@
 package core.view;
 
-import core.controller.FlightController;
-import core.controller.PassengerController;
-import core.model.Flight;
-import core.model.Location;
-import core.model.Passenger;
-import core.model.Plane;
+import core.controllers.FlightController;
+import core.controllers.PassengerController;
+import core.models.Flight;
+import core.models.Location;
+import core.models.Passenger;
+import core.models.Plane;
 import core.response.Response;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;

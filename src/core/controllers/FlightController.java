@@ -1,15 +1,15 @@
-package core.controller;
+package core.controllers;
 
-import core.model.Flight;
-import core.model.Passenger;
-import core.model.Plane;
-import core.model.Location;
-import core.model.storage.FlightStorage;
-import core.model.storage.PlaneStorage;
-import core.model.storage.LocationStorage;
-import core.model.storage.PassengerStorage;
+import core.models.Flight;
+import core.models.Passenger;
+import core.models.Plane;
+import core.models.Location;
+import core.models.storage.FlightStorage;
+import core.models.storage.PlaneStorage;
+import core.models.storage.LocationStorage;
+import core.models.storage.PassengerStorage;
 import core.response.Response;
-import core.util.Validator;
+import core.controllers.utils.Validator;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

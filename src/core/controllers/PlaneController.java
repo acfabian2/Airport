@@ -1,9 +1,9 @@
-package core.controller;
+package core.controllers;
 
-import core.model.Plane;
-import core.model.storage.PlaneStorage;
+import core.models.Plane;
+import core.models.storage.PlaneStorage;
 import core.response.Response;
-import core.util.Validator;
+import core.controllers.utils.Validator;
 
 public class PlaneController {
 

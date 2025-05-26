@@ -1,9 +1,9 @@
-package core.controller;
+package core.controllers;
 
-import core.model.Location;
-import core.model.storage.LocationStorage;
+import core.models.Location;
+import core.models.storage.LocationStorage;
 import core.response.Response;
-import core.util.Validator;
+import core.controllers.utils.Validator;
 
 public class LocationController {
 
