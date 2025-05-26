@@ -1,21 +1,33 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package main;
 
-import core.view.AirportFrame;
 import com.formdev.flatlaf.FlatDarkLaf;
+import core.views.AirportFrame;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
+/**
+ *
+ * @author samue
+ */
 public class Main {
+    
+        public static void main(String args[]) {
+        System.setProperty("flatlaf.useNativeLibrary", "false");
 
-    public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (UnsupportedLookAndFeelException e) {
-            System.err.println("No se pudo aplicar FlatDarkLaf: " + e.getMessage());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
         }
-
-        java.awt.EventQueue.invokeLater(() -> {
-            new AirportFrame().setVisible(true);
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AirportFrame().setVisible(true);
+            }
         });
     }
+    
 }

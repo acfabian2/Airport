@@ -4,15 +4,15 @@
  */
 package core.models;
 
-import core.models.Flight;
+import core.patterns.prototype.Prototype;
 import java.util.ArrayList;
 
 /**
  *
  * @author edangulo
  */
-public class Plane {
-
+public class Plane implements Prototype<Plane>{
+    
     private final String id;
     private String brand;
     private String model;
@@ -28,26 +28,11 @@ public class Plane {
         this.airline = airline;
         this.flights = new ArrayList<>();
     }
-    
-    // Constructor de copia (Prototype)
-    public Plane(Plane other) {
-        this.id = other.id;
-        this.brand = other.brand;
-        this.model = other.model;
-        this.maxCapacity = other.maxCapacity;
-        this.airline = other.airline;
-        this.flights = new ArrayList<>(other.flights); // copia superficial
-    }
-
-    @Override
-    public String toString() {
-        return id + " - " + model + " (" + brand + ") - " + airline;
-    }
 
     public void addFlight(Flight flight) {
         this.flights.add(flight);
     }
-
+    
     public String getId() {
         return id;
     }
@@ -71,9 +56,24 @@ public class Plane {
     public ArrayList<Flight> getFlights() {
         return flights;
     }
-
+    
+    public void setFlights(ArrayList<Flight> flights) {
+        this.flights = flights;
+    }
+    
     public int getNumFlights() {
         return flights.size();
     }
 
+    
+    
+    @Override
+    public Plane clone(){
+        
+        Plane copy = new Plane(this.id,this.brand,this.model,this.maxCapacity,this.airline);
+        copy.setFlights(this.flights);
+        
+        return copy;
+
+    }
 }

@@ -1,43 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package core.models.storage;
 
 import core.models.Plane;
+import core.patterns.observer.Observable;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Optional;
 
-public class PlaneStorage {
+/**
+ *
+ * @author User
+ */
+public class PlaneStorage extends Observable implements GeneralStorage<Plane> {
 
-    private static final List<Plane> planes = new ArrayList<>();
+    private static PlaneStorage instance;
 
-    public static boolean addPlane(Plane p) {
-        if (getPlaneById(p.getId()) != null) {
-            return false; 
+    private ArrayList<Plane> planes;
+
+    private PlaneStorage() {
+        this.planes = new ArrayList<>();
+    }
+
+    public static PlaneStorage getInstance() {
+        if (instance == null) {
+            instance = new PlaneStorage();
         }
-        planes.add(p);
+        return instance;
+    }
+
+    @Override
+    public boolean add(Plane item) {
+        // Optimización: Usar Streams para verificar si ya existe
+        boolean exists = planes.stream().anyMatch(p -> p.getId().equals(item.getId()));
+        if (exists) {
+            return false;
+        }
+        this.planes.add(item);
+        notifyAll(1);
         return true;
     }
 
-    public static Plane getPlaneById(String id) {
-        for (Plane p : planes) {
-            if (p.getId().equalsIgnoreCase(id)) {
-                return new Plane(p);
-            }
-        }
-        return null;
-    }
-
-    public static List<Plane> getAllSorted() {
+    @Override
+    public Plane get(String id) {
+        // Optimización: Usar Streams para encontrar el elemento
         return planes.stream()
-                .sorted(Comparator.comparing(Plane::getId))
-                .map(Plane::new)
-                .toList();
+                     .filter(plane -> plane.getId().equals(id))
+                     .findFirst()
+                     .orElse(null);
     }
 
-    public static List<Plane> getAllRaw() {
-        return new ArrayList<>(planes);
-    }
-
-    public static void clearAll() {
-        planes.clear();
+    public ArrayList<Plane> getAll() {
+        // Retornar una copia
+        return new ArrayList<>(this.planes);
     }
 }

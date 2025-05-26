@@ -1,43 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package core.models.storage;
 
 import core.models.Location;
+import core.patterns.observer.Observable;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Optional;
 
-public class LocationStorage {
+/**
+ *
+ * @author User
+ */
+public class LocationStorage extends Observable implements GeneralStorage<Location> {
 
-    private static final List<Location> locations = new ArrayList<>();
+    private static LocationStorage instance;
 
-    public static boolean addLocation(Location loc) {
-        if (getLocationById(loc.getAirportId()) != null) {
+    private ArrayList<Location> locations;
+
+    private LocationStorage() {
+        this.locations = new ArrayList<>();
+    }
+
+    public static LocationStorage getInstance() {
+        if (instance == null) {
+            instance = new LocationStorage();
+        }
+        return instance;
+    }
+
+    @Override
+    public boolean add(Location item) {
+        // Optimización: Usar Streams para verificar si ya existe
+        boolean exists = locations.stream().anyMatch(l -> l.getAirportId().equals(item.getAirportId()));
+        if (exists) {
             return false;
         }
-        locations.add(loc);
+        this.locations.add(item);
+        notifyAll(1);
         return true;
     }
 
-    public static Location getLocationById(String id) {
-        for (Location loc : locations) {
-            if (loc.getAirportId().equalsIgnoreCase(id)) {
-                return new Location(loc);
-            }
-        }
-        return null;
-    }
-
-    public static List<Location> getAllSorted() {
+    @Override
+    public Location get(String id) {
+        // Optimización: Usar Streams para encontrar el elemento
         return locations.stream()
-                .sorted(Comparator.comparing(Location::getAirportId))
-                .map(Location::new)
-                .toList();
+                        .filter(location -> location.getAirportId().equals(id))
+                        .findFirst()
+                        .orElse(null);
     }
 
-    public static List<Location> getAllRaw() {
-        return new ArrayList<>(locations);
-    }
-
-    public static void clearAll() {
-        locations.clear();
+    public ArrayList<Location> getAll() {
+        // Retornar una copia
+        return new ArrayList<>(this.locations);
     }
 }

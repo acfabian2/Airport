@@ -1,6 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package core.models;
 
-import core.models.Flight;
+import core.patterns.prototype.Prototype;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -9,8 +13,8 @@ import java.util.ArrayList;
  *
  * @author edangulo
  */
-public class Passenger {
-    
+public class Passenger implements Prototype<Passenger> {
+
     private final long id;
     private String firstname;
     private String lastname;
@@ -31,21 +35,10 @@ public class Passenger {
         this.flights = new ArrayList<>();
     }
 
-    public Passenger(Passenger other) {
-        this.id = other.id;
-        this.firstname = other.firstname;
-        this.lastname = other.lastname;
-        this.birthDate = other.birthDate;
-        this.countryPhoneCode = other.countryPhoneCode;
-        this.phone = other.phone;
-        this.country = other.country;
-        this.flights = new ArrayList<>(other.flights);
-    }
-
     public void addFlight(Flight flight) {
         this.flights.add(flight);
     }
-    
+
     public long getId() {
         return id;
     }
@@ -101,20 +94,23 @@ public class Passenger {
     public void setCountry(String country) {
         this.country = country;
     }
-    
+
     public String getFullname() {
         return firstname + " " + lastname;
     }
-    
-    public String generateFullPhone() {
-        return "+" + countryPhoneCode + " " + phone;
-    }
-    
-    public int calculateAge() {
-        return Period.between(birthDate, LocalDate.now()).getYears();
-    }
-    
+
     public int getNumFlights() {
         return flights.size();
+    }
+
+    public void setFlights(ArrayList<Flight> flights) {
+        this.flights = flights;
+    }
+
+    @Override
+    public Passenger clone() {
+        Passenger copy = new Passenger(this.id, this.firstname, this.lastname, this.birthDate, this.countryPhoneCode, this.phone, this.country);
+        copy.setFlights(this.flights);
+        return copy;
     }
 }
