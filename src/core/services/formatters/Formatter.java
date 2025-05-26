@@ -1,4 +1,4 @@
-package core.services.servicesFormatters;
+package core.services.formatters;
 
 /**
  * Generic interface for formatting an object of type T into an array of Strings.

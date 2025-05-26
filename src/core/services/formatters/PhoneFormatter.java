@@ -1,4 +1,4 @@
-package core.services.servicesFormatters;
+package core.services.formatters;
 
 import core.models.Passenger;
 

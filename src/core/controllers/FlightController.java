@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import core.models.storage.utils.LineFileReader;
 import core.services.FlightCoordinator;
 import core.services.FlightOrderer;
-import core.services.servicesFormatters.FlightFormatter;
+import core.services.formatters.FlightFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
